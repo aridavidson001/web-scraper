@@ -1,42 +1,20 @@
-import scrapy
-from urllib.parse import urlencode
-from urllib.parse import urlparse
-import json
-from datetime import datetime
-API_KEY = 'YOUR_API_KEY'
-def get_url(url):
-    payload = {'api_key': API_KEY, 'url': url, 'autoparse': 'true', 'country_code': 'us'}
-    proxy_url = 'http://api.scraperapi.com/?' + urlencode(payload)
-    return proxy_url
-def create_google_url(query, site=''):
-    google_dict = {'q': query, 'num': 100, }
-    if site:
-        web = urlparse(site).netloc
-        google_dict['as_sitesearch'] = web
-        return 'http://www.google.com/search?' + urlencode(google_dict)
-    return 'http://www.google.com/search?' + urlencode(google_dict)
-class GoogleSpider(scrapy.Spider):
-    name = 'google'
-    allowed_domains = ['api.scraperapi.com']
-    custom_settings = {'ROBOTSTXT_OBEY': False, 'LOG_LEVEL': 'INFO',
-                       'CONCURRENT_REQUESTS_PER_DOMAIN': 10, 
-                       'RETRY_TIMES': 5}
-    def start_requests(self):
-        queries = ['asana+reviews', 'clickup+reviews', 'best+project+management+software', 'best+project+management+software+for+small+teams']
-        for query in queries:
-            url = create_google_url(query)
-            yield scrapy.Request(get_url(url), callback=self.parse, meta={'pos': 0})
-    def parse(self, response):
-        di = json.loads(response.text)
-        pos = response.meta['pos']
-        dt = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        for result in di['organic_results']:
-            title = result['title']
-            snippet = result['snippet']
-            link = result['link']
-            item = {'title': title, 'snippet': snippet, 'link': link, 'position': pos, 'date': dt}
-            pos += 1
-            yield item
-        next_page = di['pagination']['nextPageUrl']
-        if next_page:
-            yield scrapy.Request(get_url(next_page), callback=self.parse, meta={'pos': pos})
+import csv
+import requests
+from bs4 import BeautifulSoup
+import streamlit as st
+url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+results = soup.find(id='resultsCol')
+indeed_jobs = results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
+file = open('indeed-jobs.csv', 'w')
+writer = csv.writer(file)
+# write header rows
+writer.writerow(['Title', 'Company', 'Location', 'Apply'])
+for indeed_job in indeed_jobs:
+   job_title = indeed_job.find('h2', class_='title').text.strip()
+   job_company = indeed_job.find('span', class_='company').text.strip()
+   job_location = indeed_job.find('span', class_='location accessible-contrast-color-location').text.strip()
+   job_url = indeed_job.find('a')['href']
+   writer.writerow([job_title.encode('utf-8'), job_company.encode('utf-8'), job_location.encode('utf-8'), job_url.encode('utf-8')])
+file.close()
