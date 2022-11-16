@@ -11,5 +11,6 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 results = soup.find(id='resultsCol')
 print(results)
+st.write(results)
 #print(results.prettify())
 #st.write(results.prettify())
