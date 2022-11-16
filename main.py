@@ -8,9 +8,6 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = soup.find('a')
 print(results)
-st.write(results)
-#print(soup.prettify())
-#st.write(soup.prettify())
 
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
