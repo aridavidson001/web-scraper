@@ -1,5 +1,6 @@
 import csv
-import from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
 import streamlit as st
 
 url = 'http://api.scraperapi.com?api_key=f894cc3b0ca8e6b70619aa940b31139a&url=https://www.indeed.com/jobs?q=web+developer&l=New+York'
