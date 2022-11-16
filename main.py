@@ -8,9 +8,9 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 print (soup.find(id='resultsCol'))
 results = (soup.find(id='resultsCol')
-#indeed_job = results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
-file = open('indeed-jobs.csv', 'w')
-writer = csv.writer(file)
+results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
+open('indeed-jobs.csv', 'w')
+writer = csv.writer(indeed-jobs.csv)
 # write header rows
 writer.writerow(['Title', 'Company', 'Location', 'Apply'])
 for indeed_job in indeed_jobs:
