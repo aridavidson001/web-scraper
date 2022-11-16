@@ -7,8 +7,9 @@ url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 souptwo = soup(page.content, 'html.parser')
 results = souptwo.find(id='resultsCol')
-print(results.prettify())
-st.write(results.prettify())
+results.prettify()
+print(results)
+st.write(results)
 
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
