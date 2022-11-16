@@ -1,6 +1,6 @@
 import csv
 import requests
-from bs4 import BeautifulSoup as soup
+from bs4 import BeautifulSoup
 import streamlit as st
 
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
