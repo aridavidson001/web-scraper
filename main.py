@@ -8,7 +8,7 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 print (soup.find(id='resultsCol'))
 results = (soup.find(id='resultsCol')
-results.select("div.jobsearch-SerpJobCard.unifiedRow.row.result")
+indeed_jobs = results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
 open('indeed-jobs.csv', 'w')
 writer = csv.writer(indeed-jobs.csv)
 # write header rows
