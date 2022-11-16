@@ -6,4 +6,5 @@ url = 'https://www.indeed.com/jobs?'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = soup.find(id='resultsCol')
+print(results.prettify())
 st.write(results.prettify())
