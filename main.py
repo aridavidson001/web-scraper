@@ -2,11 +2,20 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
+
+url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+results = soup.find(id='resultsCol')
+print(results.prettify())
+st.write(results.prettify())
+
+'''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 st.write(page.content)
 st.write(page.status_code)
-
+'''
 
 
 
