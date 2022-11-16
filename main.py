@@ -2,13 +2,14 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
-
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
-results = soup.find('link')
-print(results)
-st.write(results)
+
+#results = soup.find('link')
+#print(results)
+#st.write(soup)
+print BeautifulSoup(definition).find('p').text
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
