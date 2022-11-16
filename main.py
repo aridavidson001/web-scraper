@@ -5,7 +5,7 @@ import streamlit as st
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
-print(soup.findAll('link', limit=1))
+print(soup.findAll('a', limit=10))
 #results = soup.find('link')
 #print(results)
 #st.write(soup)
