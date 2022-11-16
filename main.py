@@ -9,7 +9,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 #results = soup.find('link')
 #print(results)
 #st.write(soup)
-print BeautifulSoup(definition).find('p').text
+print BeautifulSoup(soup).find('p').text
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
