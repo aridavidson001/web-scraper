@@ -10,6 +10,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 #print(results)
 #st.write(soup)
 print BeautifulSoup(soup).find('p').text
+
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
