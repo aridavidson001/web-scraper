@@ -7,8 +7,10 @@ url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = soup.find('p')
-print(soup.prettify())
-st.write(soup.prettify())
+print(results)
+st.write(results)
+#print(soup.prettify())
+#st.write(soup.prettify())
 
 '''
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
