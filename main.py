@@ -6,8 +6,9 @@ import streamlit as st
 url = 'http://api.scraperapi.com?api_key=f894cc3b0ca8e6b70619aa940b31139a&url=https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
-results = soup.find_all('link')
-indeed_jobs = soup.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
+print (soup.find_all('id='resultsCol'))
+results = soup.find_all('id='resultsCol')
+indeed_jobs = results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
 file = open('indeed-jobs.csv', 'w')
 writer = csv.writer(file)
 # write header rows
