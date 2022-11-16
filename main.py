@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 import streamlit as st
 url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
-print(page.content)
-print(page.status_code)
+st.write(page.content)
+st.write(page.status_code)
 
 
 
