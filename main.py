@@ -8,7 +8,7 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = soup.find(id='resultsCol')
 #soup.prettify()
-print(soup.prettify(formatter=formatter))
+print(soup.prettify())
 #print(soup)
 #st.write(soup)
 
