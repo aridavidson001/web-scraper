@@ -9,7 +9,7 @@ page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find(id='p')
+results = soup.find(id='results')
 print(results)
 st.write(results)
 #print(results.prettify())
