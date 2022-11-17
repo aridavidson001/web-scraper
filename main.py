@@ -31,8 +31,9 @@ soup = BeautifulSoup(page.content, 'html.parser')
 print(soup)
 
 '''
- with open('files/website-3.html') as f:
-    content = f.read()
-    soup = BeautifulSoup(content, 'html.parser')
-    print(soup.title)      
-    st.write(soup.title)      
+f = open('website-3.html')
+content = f.read()
+#parse HTML
+soup = BeautifulSoup(content, 'html.parser')
+#print Title tag
+print(soup.title)
