@@ -37,3 +37,4 @@ content = f.read()
 soup = BeautifulSoup(content, 'html.parser')
 #print Title tag
 print(soup.title)
+st.write(soup.title)
