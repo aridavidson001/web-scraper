@@ -31,7 +31,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 print(soup)
 
 '''
-f = open('Google-Drive/My-Drive/website-3.html')
+f = open('GoogleDrive/MyDrive/website-3.html')
 content = f.read()
 #parse HTML
 soup = BeautifulSoup(content, 'html.parser')
