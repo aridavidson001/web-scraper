@@ -8,7 +8,7 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 print (soup.find(id='resultsCol'))
 results = (soup.find(id='resultsCol')
-indeed_jobs = results.select('div.jobsearch-SerpJobCard.unifiedRow.row.result')
+indeed_jobs = results.find_all('div', class_='jobsearch-SerpJobCard unifiedRow row result clickcard')
 open('indeed-jobs.csv', 'w')
 writer = csv.writer(indeed-jobs.csv)
 # write header rows
@@ -20,4 +20,3 @@ for indeed_job in indeed_jobs:
    job_url = indeed_job.find('a')['href']
    writer.writerow([job_title.encode('utf-8'), job_company.encode('utf-8'), job_location.encode('utf-8'), job_url.encode('utf-8')])
 file.close()
-
