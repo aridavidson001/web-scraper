@@ -31,6 +31,6 @@ page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find(id='skip-nav')
+results = soup.find(id='employerlink-US')
 
 print(results.prettify())
