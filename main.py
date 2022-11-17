@@ -19,7 +19,9 @@ for indeed_job in indeed_jobs:
    job_url = indeed_job.find('a')['href']
    writer.writerow([job_title.encode('utf-8'), job_company.encode('utf-8'), job_location.encode('utf-8'), job_url.encode('utf-8')])
 file.close()
-'''
+
+#second part
+
 url = 'http://api.scraperapi.com?api_key=f894cc3b0ca8e6b70619aa940b31139a&url=https://www.indeed.com/jobs?q=web+developer&l=New+York'
 #url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
@@ -27,3 +29,10 @@ print(page.status_code)
 st.write(page.status_code)
 soup = BeautifulSoup(page.content, 'html.parser')
 print(soup)
+
+'''
+ with open('files/website-3.html') as f:
+    content = f.read()
+    soup = BeautifulSoup(content, 'html.parser')
+    print(soup.title)      
+    st.write(soup.title)      
