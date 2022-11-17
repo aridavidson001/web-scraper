@@ -39,6 +39,6 @@ def getsoup():
    soup = BeautifulSoup(content, 'html.parser')
    return soup
 #print Title tag
-printthesoup = soup
+printthesoup = getsoup()
 print(printthesoup.title)
 st.write(printthesoup.title)
