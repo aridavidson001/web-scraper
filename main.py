@@ -1,4 +1,4 @@
-import csv
+'''import csv
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
@@ -20,3 +20,17 @@ for indeed_job in indeed_jobs:
    job_url = indeed_job.find('a')['href']
    writer.writerow([job_title.encode('utf-8'), job_company.encode('utf-8'), job_location.encode('utf-8'), job_url.encode('utf-8')])
 file.close()
+'''
+import requests
+import streamlit as st
+from bs4 import BeautifulSoup
+
+url = 'https://www.indeed.com/jobs?q=web+developer&l=New+York'
+
+page = requests.get(url)
+
+soup = BeautifulSoup(page.content, 'html.parser')
+
+results = soup.find(id='resultsCol')
+
+print(results.prettify())
