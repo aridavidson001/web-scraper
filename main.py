@@ -31,6 +31,6 @@ page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find(id='resultsCol')
+results = soup.find(id='skip-nav')
 
 print(results.prettify())
