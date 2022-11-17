@@ -31,10 +31,14 @@ soup = BeautifulSoup(page.content, 'html.parser')
 print(soup)
 
 '''
+
 f = open('Files/website-3.html')
 content = f.read()
 #parse HTML
-soup = BeautifulSoup(content, 'html.parser')
+def getsoup():
+   soup = BeautifulSoup(content, 'html.parser')
+   return soup
 #print Title tag
-print(soup.title)
-st.write(soup.title)
+printthesoup = soup
+print(printthesoup.title)
+st.write(printthesoup.title)
