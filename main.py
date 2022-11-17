@@ -7,7 +7,7 @@ url = 'http://api.scraperapi.com?api_key=f894cc3b0ca8e6b70619aa940b31139a&url=ht
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = (soup.find(id='resultsCol')
-indeed_jobs = soup.find_all(class_='jobsearch-SerpJobCard unifiedRow row result')
+hellotheretestvariableone = results.find_all(class_='jobsearch-SerpJobCard unifiedRow row result')
 open('indeed-jobs.csv', 'w')
 writer = csv.writer(indeed-jobs.csv)
 # write header rows
