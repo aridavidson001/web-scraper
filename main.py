@@ -5,6 +5,7 @@ import streamlit as st
 
 url = 'http://api.scraperapi.com?api_key=f894cc3b0ca8e6b70619aa940b31139a&url=https://www.indeed.com/jobs?q=web+developer&l=New+York'
 page = requests.get(url)
+st.write(page.status_code)
 soup = BeautifulSoup(page.content, 'html.parser')
 results = (soup.find(id='resultsCol')
 hellotheretestvariableone = results.find_all(class_='jobsearch-SerpJobCard unifiedRow row result')
